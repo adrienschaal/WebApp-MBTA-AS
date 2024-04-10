@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Nearest MBTA Station</title>
+</head>
+
+<body>
+    <h1>Nearest MBTA Station</h1>
+    <p>Nearest MBTA Stop: {{ mbta_stop }}</p>
+    <p>Wheelchair Accessible: {{ 'Yes' if accessible else 'No' }}</p>
+    <h2>Current Weather in Boston</h2>
+    <p>Temperature: {{ temperature }}°F</p>
+    <p>Description: {{ weather_description }}</p>
+    <a href="/">Try another location</a>
+
+    {% if events %}
+    <h2>Upcoming Events in Boston</h2>
+    <ul>
+        {% for event in events %}
+        <li>
+            <a href="{{ event.url }}" target="_blank">{{ event.name }}</a> - {{ event.start_date }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No upcoming events found.</p>
+    {% endif %}
+</body>
+
+</html>
